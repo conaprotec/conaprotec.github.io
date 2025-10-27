@@ -8,8 +8,8 @@
     <!-- Outer hexagon -->
     <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" fill="url(#hexGradient)"/>
 
-    <!-- Middle white hexagon -->
-    <path d="M50 20 L75 35 L75 65 L50 80 L25 65 L25 35 Z" fill="white"/>
+    <!-- Middle white C shape -->
+    <path d="M50 20 L25 35 L25 65 L50 80 L50 65 L35 56 L35 44 L50 35 Z" fill="white"/>
 
     <!-- Inner cube/hexagon -->
     <path d="M50 35 L65 44 L65 56 L50 65 L35 56 L35 44 Z" fill="#1e88c7"/>
