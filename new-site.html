@@ -322,28 +322,28 @@
 
         /* Contact Section */
         .contact-content {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
 
         .contact-info {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            flex-direction: row;
+            justify-content: center;
+            gap: 4rem;
             margin-top: 2rem;
         }
 
         .contact-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
         .contact-item h3 {
-            color: var(--primary-purple);
+            color: var(--text-dark);
             margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
         .contact-item a {
@@ -430,6 +430,11 @@
 
             .about-content {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
             }
 
             h2 {
