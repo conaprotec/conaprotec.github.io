@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONAPROTEC - Consultoría y Desarrollo Tecnológico</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        :root {
+            --primary-purple: #3d3b7a;
+            --primary-blue: #4a7bc8;
+            --light-blue: #1a94d6;
+            --dark-navy: #2d3561;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: var(--primary-purple);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-purple);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        #about {
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+        }
+
+        .about-features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .about-features li::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item h3 {
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Language-specific content */
+        [data-lang="en"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="es"] {
+            display: none;
+        }
+
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" alt="CONAPROTEC Logo" class="logo">
+                <span class="company-name">CONAPROTEC</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-lang="es">Inicio</a><a href="#home" data-lang="en">Home</a></li>
+                <li><a href="#services" data-lang="es">Servicios</a><a href="#services" data-lang="en">Services</a></li>
+                <li><a href="#about" data-lang="es">Nosotros</a><a href="#about" data-lang="en">About</a></li>
+                <li><a href="#contact" data-lang="es">Contacto</a><a href="#contact" data-lang="en">Contact</a></li>
+                <li class="lang-switcher">
+                    <button class="lang-btn active" data-lang-btn="es" onclick="setLanguage('es')">ES</button>
+                    <button class="lang-btn" data-lang-btn="en" onclick="setLanguage('en')">EN</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 data-lang="es">Transformación Digital para tu Empresa</h1>
+            <h1 data-lang="en">Digital Transformation for Your Business</h1>
+            <p data-lang="es">Soluciones tecnológicas innovadoras que impulsan el crecimiento de tu negocio</p>
+            <p data-lang="en">Innovative technology solutions that drive your business growth</p>
+            <a href="#contact" class="cta-button" data-lang="es">Contáctanos</a>
+            <a href="#contact" class="cta-button" data-lang="en">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 data-lang="es">Nuestros Servicios</h2>
+        <h2 data-lang="en">Our Services</h2>
+        <div class="services-grid">
+            <!-- Service 1: Consulting -->
+            <div class="service-card">
+                <div class="service-icon">💼</div>
+                <h3 data-lang="es">Consultoría Empresarial</h3>
+                <h3 data-lang="en">Business Consulting</h3>
+                <p data-lang="es">Asesoramiento estratégico para optimizar procesos, mejorar la eficiencia operativa y alcanzar objetivos de negocio.</p>
+                <p data-lang="en">Strategic advisory to optimize processes, improve operational efficiency, and achieve business objectives.</p>
+            </div>
+
+            <!-- Service 2: Software Development -->
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3 data-lang="es">Desarrollo de Software</h3>
+                <h3 data-lang="en">Software Development</h3>
+                <p data-lang="es">Soluciones personalizadas de software que se adaptan a las necesidades específicas de tu empresa.</p>
+                <p data-lang="en">Custom software solutions tailored to your company's specific needs.</p>
+            </div>
+
+            <!-- Service 3: Cloud Consulting -->
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <h3 data-lang="es">Consultoría en la Nube</h3>
+                <h3 data-lang="en">Cloud Consulting</h3>
+                <p data-lang="es">Migración, optimización y gestión de infraestructuras cloud para maximizar eficiencia y reducir costos.</p>
+                <p data-lang="en">Cloud infrastructure migration, optimization, and management to maximize efficiency and reduce costs.</p>
+            </div>
+
+            <!-- Service 4: IT Outsourcing -->
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3 data-lang="es">Outsourcing de TI</h3>
+                <h3 data-lang="en">IT Outsourcing</h3>
+                <p data-lang="es">Gestión completa de tu infraestructura tecnológica con equipos especializados y disponibilidad 24/7.</p>
+                <p data-lang="en">Complete management of your IT infrastructure with specialized teams and 24/7 availability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 data-lang="es">¿Por Qué Elegir CONAPROTEC?</h2>
+        <h2 data-lang="en">Why Choose CONAPROTEC?</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3 data-lang="es">Experiencia y Compromiso</h3>
+                <h3 data-lang="en">Experience and Commitment</h3>
+                <p data-lang="es">Somos un equipo de profesionales apasionados por la tecnología, dedicados a transformar desafíos en oportunidades de crecimiento.</p>
+                <p data-lang="en">We are a team of professionals passionate about technology, dedicated to transforming challenges into growth opportunities.</p>
+                <p data-lang="es">Nuestra misión es proporcionar soluciones tecnológicas de vanguardia que generen valor real para nuestros clientes.</p>
+                <p data-lang="en">Our mission is to provide cutting-edge technology solutions that generate real value for our clients.</p>
+            </div>
+            <ul class="about-features">
+                <li data-lang="es">Equipo altamente calificado</li>
+                <li data-lang="en">Highly qualified team</li>
+                <li data-lang="es">Soluciones personalizadas</li>
+                <li data-lang="en">Customized solutions</li>
+                <li data-lang="es">Soporte técnico 24/7</li>
+                <li data-lang="en">24/7 technical support</li>
+                <li data-lang="es">Tecnologías de última generación</li>
+                <li data-lang="en">State-of-the-art technologies</li>
+                <li data-lang="es">Enfoque en resultados</li>
+                <li data-lang="en">Results-driven approach</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 data-lang="es">Contáctanos</h2>
+        <h2 data-lang="en">Contact Us</h2>
+        <div class="contact-content">
+            <p data-lang="es">¿Listo para transformar tu negocio? Estamos aquí para ayudarte.</p>
+            <p data-lang="en">Ready to transform your business? We're here to help.</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3 data-lang="es">Email</h3>
+                    <h3 data-lang="en">Email</h3>
+                    <a href="mailto:info@conaprotec.com">info@conaprotec.com</a>
+                </div>
+                <div class="contact-item">
+                    <h3 data-lang="es">Sitio Web</h3>
+                    <h3 data-lang="en">Website</h3>
+                    <a href="https://conaprotec.com">www.conaprotec.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p data-lang="es">&copy; 2025 CONAPROTEC. Todos los derechos reservados.</p>
+        <p data-lang="en">&copy; 2025 CONAPROTEC. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Language Switcher
+        function setLanguage(lang) {
+            document.body.className = lang === 'en' ? 'lang-en' : '';
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang-btn="${lang}"]`).classList.add('active');
+
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            if (savedLang === 'en') {
+                setLanguage('en');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.style.padding = '1rem 0';
+            }
+
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
