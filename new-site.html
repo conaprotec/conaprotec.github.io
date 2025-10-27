@@ -88,33 +88,6 @@
             color: var(--primary-blue);
         }
 
-        .lang-switcher {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
-        }
-
-        .lang-btn {
-            padding: 0.4rem 0.8rem;
-            border: 2px solid var(--primary-blue);
-            background: transparent;
-            color: var(--primary-blue);
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .lang-btn.active {
-            background: var(--primary-blue);
-            color: white;
-        }
-
-        .lang-btn:hover {
-            background: var(--primary-blue);
-            color: white;
-        }
-
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -368,19 +341,6 @@
             opacity: 0.8;
         }
 
-        /* Language-specific content */
-        [data-lang="en"] {
-            display: none;
-        }
-
-        body.lang-en [data-lang="es"] {
-            display: none;
-        }
-
-        body.lang-en [data-lang="en"] {
-            display: block;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -431,14 +391,10 @@
                 <span class="company-name">CONAPROTEC</span>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" data-lang="es">Inicio</a><a href="#home" data-lang="en">Home</a></li>
-                <li><a href="#services" data-lang="es">Servicios</a><a href="#services" data-lang="en">Services</a></li>
-                <li><a href="#about" data-lang="es">Nosotros</a><a href="#about" data-lang="en">About</a></li>
-                <li><a href="#contact" data-lang="es">Contacto</a><a href="#contact" data-lang="en">Contact</a></li>
-                <li class="lang-switcher">
-                    <button class="lang-btn active" data-lang-btn="es" onclick="setLanguage('es')">ES</button>
-                    <button class="lang-btn" data-lang-btn="en" onclick="setLanguage('en')">EN</button>
-                </li>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#about">Nosotros</a></li>
+                <li><a href="#contact">Contacto</a></li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
@@ -447,102 +403,77 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 data-lang="es">Transformación Digital para tu Empresa</h1>
-            <h1 data-lang="en">Digital Transformation for Your Business</h1>
-            <p data-lang="es">Soluciones tecnológicas innovadoras que impulsan el crecimiento de tu negocio</p>
-            <p data-lang="en">Innovative technology solutions that drive your business growth</p>
-            <a href="#contact" class="cta-button" data-lang="es">Contáctanos</a>
-            <a href="#contact" class="cta-button" data-lang="en">Contact Us</a>
+            <h1>Transformación Digital para tu Empresa</h1>
+            <p>Soluciones tecnológicas innovadoras que impulsan el crecimiento de tu negocio</p>
+            <a href="#contact" class="cta-button">Contáctanos</a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services">
-        <h2 data-lang="es">Nuestros Servicios</h2>
-        <h2 data-lang="en">Our Services</h2>
+        <h2>Nuestros Servicios</h2>
         <div class="services-grid">
             <!-- Service 1: Consulting -->
             <div class="service-card">
                 <div class="service-icon">💼</div>
-                <h3 data-lang="es">Consultoría Empresarial</h3>
-                <h3 data-lang="en">Business Consulting</h3>
-                <p data-lang="es">Asesoramiento estratégico para optimizar procesos, mejorar la eficiencia operativa y alcanzar objetivos de negocio.</p>
-                <p data-lang="en">Strategic advisory to optimize processes, improve operational efficiency, and achieve business objectives.</p>
+                <h3>Consultoría Empresarial</h3>
+                <p>Asesoramiento estratégico para optimizar procesos, mejorar la eficiencia operativa y alcanzar objetivos de negocio.</p>
             </div>
 
             <!-- Service 2: Software Development -->
             <div class="service-card">
                 <div class="service-icon">💻</div>
-                <h3 data-lang="es">Desarrollo de Software</h3>
-                <h3 data-lang="en">Software Development</h3>
-                <p data-lang="es">Soluciones personalizadas de software que se adaptan a las necesidades específicas de tu empresa.</p>
-                <p data-lang="en">Custom software solutions tailored to your company's specific needs.</p>
+                <h3>Desarrollo de Software</h3>
+                <p>Soluciones personalizadas de software que se adaptan a las necesidades específicas de tu empresa.</p>
             </div>
 
             <!-- Service 3: Cloud Consulting -->
             <div class="service-card">
                 <div class="service-icon">☁️</div>
-                <h3 data-lang="es">Consultoría en la Nube</h3>
-                <h3 data-lang="en">Cloud Consulting</h3>
-                <p data-lang="es">Migración, optimización y gestión de infraestructuras cloud para maximizar eficiencia y reducir costos.</p>
-                <p data-lang="en">Cloud infrastructure migration, optimization, and management to maximize efficiency and reduce costs.</p>
+                <h3>Consultoría en la Nube</h3>
+                <p>Migración, optimización y gestión de infraestructuras cloud para maximizar eficiencia y reducir costos.</p>
             </div>
 
             <!-- Service 4: IT Outsourcing -->
             <div class="service-card">
                 <div class="service-icon">🔧</div>
-                <h3 data-lang="es">Outsourcing de TI</h3>
-                <h3 data-lang="en">IT Outsourcing</h3>
-                <p data-lang="es">Gestión completa de tu infraestructura tecnológica con equipos especializados y disponibilidad 24/7.</p>
-                <p data-lang="en">Complete management of your IT infrastructure with specialized teams and 24/7 availability.</p>
+                <h3>Outsourcing de TI</h3>
+                <p>Gestión completa de tu infraestructura tecnológica con equipos especializados y disponibilidad 24/7.</p>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2 data-lang="es">¿Por Qué Elegir CONAPROTEC?</h2>
-        <h2 data-lang="en">Why Choose CONAPROTEC?</h2>
+        <h2>¿Por Qué Elegir CONAPROTEC?</h2>
         <div class="about-content">
             <div class="about-text">
-                <h3 data-lang="es">Experiencia y Compromiso</h3>
-                <h3 data-lang="en">Experience and Commitment</h3>
-                <p data-lang="es">Somos un equipo de profesionales apasionados por la tecnología, dedicados a transformar desafíos en oportunidades de crecimiento.</p>
-                <p data-lang="en">We are a team of professionals passionate about technology, dedicated to transforming challenges into growth opportunities.</p>
-                <p data-lang="es">Nuestra misión es proporcionar soluciones tecnológicas de vanguardia que generen valor real para nuestros clientes.</p>
-                <p data-lang="en">Our mission is to provide cutting-edge technology solutions that generate real value for our clients.</p>
+                <h3>Experiencia y Compromiso</h3>
+                <p>Somos un equipo de profesionales apasionados por la tecnología, dedicados a transformar desafíos en oportunidades de crecimiento.</p>
+                <p>Nuestra misión es proporcionar soluciones tecnológicas de vanguardia que generen valor real para nuestros clientes.</p>
             </div>
             <ul class="about-features">
-                <li data-lang="es">Equipo altamente calificado</li>
-                <li data-lang="en">Highly qualified team</li>
-                <li data-lang="es">Soluciones personalizadas</li>
-                <li data-lang="en">Customized solutions</li>
-                <li data-lang="es">Soporte técnico 24/7</li>
-                <li data-lang="en">24/7 technical support</li>
-                <li data-lang="es">Tecnologías de última generación</li>
-                <li data-lang="en">State-of-the-art technologies</li>
-                <li data-lang="es">Enfoque en resultados</li>
-                <li data-lang="en">Results-driven approach</li>
+                <li>Equipo altamente calificado</li>
+                <li>Soluciones personalizadas</li>
+                <li>Soporte técnico 24/7</li>
+                <li>Tecnologías de última generación</li>
+                <li>Enfoque en resultados</li>
             </ul>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2 data-lang="es">Contáctanos</h2>
-        <h2 data-lang="en">Contact Us</h2>
+        <h2>Contáctanos</h2>
         <div class="contact-content">
-            <p data-lang="es">¿Listo para transformar tu negocio? Estamos aquí para ayudarte.</p>
-            <p data-lang="en">Ready to transform your business? We're here to help.</p>
+            <p>¿Listo para transformar tu negocio? Estamos aquí para ayudarte.</p>
             <div class="contact-info">
                 <div class="contact-item">
-                    <h3 data-lang="es">Email</h3>
-                    <h3 data-lang="en">Email</h3>
+                    <h3>Email</h3>
                     <a href="mailto:info@conaprotec.com">info@conaprotec.com</a>
                 </div>
                 <div class="contact-item">
-                    <h3 data-lang="es">Sitio Web</h3>
-                    <h3 data-lang="en">Website</h3>
+                    <h3>Sitio Web</h3>
                     <a href="https://conaprotec.com">www.conaprotec.com</a>
                 </div>
             </div>
@@ -551,33 +482,10 @@
 
     <!-- Footer -->
     <footer>
-        <p data-lang="es">&copy; 2025 CONAPROTEC. Todos los derechos reservados.</p>
-        <p data-lang="en">&copy; 2025 CONAPROTEC. All rights reserved.</p>
+        <p>&copy; 2025 CONAPROTEC. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Language Switcher
-        function setLanguage(lang) {
-            document.body.className = lang === 'en' ? 'lang-en' : '';
-
-            // Update button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[data-lang-btn="${lang}"]`).classList.add('active');
-
-            // Save preference
-            localStorage.setItem('preferredLanguage', lang);
-        }
-
-        // Load saved language preference
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
-            if (savedLang === 'en') {
-                setLanguage('en');
-            }
-        });
-
         // Mobile Menu Toggle
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
