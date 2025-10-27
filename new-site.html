@@ -378,7 +378,12 @@
         }
 
         body.lang-en [data-lang="en"] {
-            display: revert !important;
+            display: block !important;
+        }
+
+        /* Preserve flex layout for list items in English mode */
+        body.lang-en .about-features li[data-lang="en"] {
+            display: flex !important;
         }
 
         /* Responsive */
