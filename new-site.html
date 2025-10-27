@@ -19,6 +19,10 @@
             --bg-secondary: #f8f9fa;
             --card-bg: #ffffff;
             --shadow-color: rgba(0,0,0,0.1);
+            --hero-gradient-start: #3d3b7a;
+            --hero-gradient-end: #4a7bc8;
+            --footer-bg: #2c3e50;
+            --footer-text: #ffffff;
         }
 
         body.dark-mode {
@@ -30,6 +34,10 @@
             --bg-secondary: #27272a;
             --card-bg: #27272a;
             --shadow-color: rgba(0,0,0,0.3);
+            --hero-gradient-start: #1e1b3a;
+            --hero-gradient-end: #1a2c4a;
+            --footer-bg: #0f0f10;
+            --footer-text: #e4e4e7;
         }
 
         * {
@@ -161,7 +169,7 @@
         .hero {
             margin-top: 80px;
             min-height: 90vh;
-            background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--hero-gradient-start) 0%, var(--hero-gradient-end) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -170,6 +178,7 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
+            transition: background 0.3s ease;
         }
 
         .hero::before {
@@ -391,14 +400,15 @@
 
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             text-align: center;
             padding: 2rem;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         footer p {
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         /* Language-specific content */
