@@ -369,20 +369,31 @@
         }
 
         /* Language-specific content */
+        /* Hide English content by default (Spanish mode) */
         [data-lang="en"] {
             display: none !important;
         }
 
+        /* English mode: hide Spanish content */
         body.lang-en [data-lang="es"] {
             display: none !important;
         }
 
-        body.lang-en [data-lang="en"] {
+        /* English mode: show English content */
+        body.lang-en h1[data-lang="en"],
+        body.lang-en h2[data-lang="en"],
+        body.lang-en h3[data-lang="en"],
+        body.lang-en p[data-lang="en"],
+        body.lang-en a[data-lang="en"] {
             display: block !important;
         }
 
-        /* Preserve flex layout for list items in English mode */
-        body.lang-en .about-features li[data-lang="en"] {
+        body.lang-en a[data-lang="en"] {
+            display: inline-block !important;
+        }
+
+        /* English mode: list items need flex layout */
+        body.lang-en li[data-lang="en"] {
             display: flex !important;
         }
 
