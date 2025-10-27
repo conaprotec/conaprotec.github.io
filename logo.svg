@@ -8,21 +8,16 @@
     <!-- Outer hexagon -->
     <path d="M50 5 L90 27.5 L90 72.5 L50 95 L10 72.5 L10 27.5 Z" fill="url(#hexGradient)"/>
 
-    <!-- Middle white C shape -->
-    <path d="M50 20 L25 35 L25 65 L50 80 L50 65 L35 56 L35 44 L50 35 Z" fill="white"/>
+    <!-- White C shape - thick border with opening on upper right -->
+    <path d="M50 20 L25 35 L25 65 L50 80 L75 65 L75 50 L65 56 L65 60 L50 70 L35 60 L35 40 L50 30 L60 36 L50 20 Z" fill="white"/>
 
-    <!-- Inner cube/hexagon -->
-    <path d="M50 35 L65 44 L65 56 L50 65 L35 56 L35 44 Z" fill="#1e88c7"/>
+    <!-- Inner cube - isometric 3D -->
+    <!-- Top face (light blue) -->
+    <path d="M50 35 L65 44 L50 53 L35 44 Z" fill="#63b3ed"/>
 
-    <!-- Cube 3D effect - top face -->
-    <path d="M50 35 L65 44 L50 53 Z" fill="#63b3d1" opacity="0.8"/>
+    <!-- Left face (dark purple) -->
+    <path d="M35 44 L50 53 L50 65 L35 56 Z" fill="#2d3561"/>
 
-    <!-- Cube 3D effect - left face -->
-    <path d="M50 53 L35 44 L50 35 Z" fill="#3d3b7a" opacity="0.6"/>
-
-    <!-- Cube 3D effect - bottom left -->
-    <path d="M50 53 L50 65 L35 56 Z" fill="#2a2859" opacity="0.7"/>
-
-    <!-- Cube 3D effect - bottom right -->
-    <path d="M50 53 L65 56 L50 65 Z" fill="#4a7bc8" opacity="0.5"/>
+    <!-- Right face (medium blue) -->
+    <path d="M50 53 L65 44 L65 56 L50 65 Z" fill="#4a6fa5"/>
 </svg>
