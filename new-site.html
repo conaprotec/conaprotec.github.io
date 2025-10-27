@@ -15,6 +15,21 @@
             --text-light: #7f8c8d;
             --bg-light: #f8f9fa;
             --white: #ffffff;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow-color: rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode {
+            --text-dark: #e4e4e7;
+            --text-light: #a1a1aa;
+            --bg-light: #27272a;
+            --white: #18181b;
+            --bg-primary: #18181b;
+            --bg-secondary: #27272a;
+            --card-bg: #27272a;
+            --shadow-color: rgba(0,0,0,0.3);
         }
 
         * {
@@ -28,6 +43,8 @@
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Header & Navigation */
@@ -35,9 +52,9 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-primary);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px var(--shadow-color);
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -122,6 +139,22 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--text-dark);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
 
         /* Hero Section */
@@ -231,17 +264,17 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px var(--shadow-color);
             transition: all 0.3s;
             text-align: center;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
         .service-icon {
@@ -298,9 +331,9 @@
         .about-features li {
             padding: 1rem;
             margin-bottom: 1rem;
-            background: white;
+            background: var(--card-bg);
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px var(--shadow-color);
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -460,6 +493,11 @@
                     <button class="lang-btn active" data-lang-btn="es" onclick="setLanguage('es')">ES</button>
                     <button class="lang-btn" data-lang-btn="en" onclick="setLanguage('en')">EN</button>
                 </li>
+                <li>
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
             </ul>
             <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
         </nav>
@@ -578,9 +616,39 @@
     </footer>
 
     <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark-mode');
+            const themeIcon = document.querySelector('.theme-icon');
+
+            if (isDark) {
+                body.classList.remove('dark-mode');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
         // Language Switcher
         function setLanguage(lang) {
-            document.body.className = lang === 'en' ? 'lang-en' : '';
+            const body = document.body;
+            const isDark = body.classList.contains('dark-mode');
+
+            // Set language class
+            if (lang === 'en') {
+                body.classList.add('lang-en');
+            } else {
+                body.classList.remove('lang-en');
+            }
+
+            // Preserve dark mode class
+            if (isDark) {
+                body.classList.add('dark-mode');
+            }
 
             // Update button states
             document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -592,8 +660,17 @@
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Load saved language preference
+        // Load saved preferences
         window.addEventListener('DOMContentLoaded', () => {
+            // Load theme preference
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            const themeIcon = document.querySelector('.theme-icon');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.textContent = '☀️';
+            }
+
+            // Load language preference
             const savedLang = localStorage.getItem('preferredLanguage') || 'es';
             if (savedLang === 'en') {
                 setLanguage('en');
