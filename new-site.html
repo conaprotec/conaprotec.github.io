@@ -370,15 +370,19 @@
 
         /* Language-specific content */
         [data-lang="en"] {
-            display: none;
+            display: none !important;
+        }
+
+        [data-lang="es"] {
+            display: initial;
         }
 
         body.lang-en [data-lang="es"] {
-            display: none;
+            display: none !important;
         }
 
         body.lang-en [data-lang="en"] {
-            display: block;
+            display: initial !important;
         }
 
         /* Responsive */
